@@ -36,7 +36,8 @@ public class prefs {
     }
 
     public static double getVERSION_NUMBER() {
-        return Double.valueOf(PREFERENCE_DICTIONARY.get("version"));
+        double VERSION_NUMBER = (Double.valueOf(PREFERENCE_DICTIONARY.get("version")
+        return (VERSION_NUMBER != null) ? (VERSION_NUMBER) : (-1);
 
     }
 }
