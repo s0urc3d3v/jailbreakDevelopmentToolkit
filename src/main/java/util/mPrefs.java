@@ -20,7 +20,9 @@ public class mPrefs {
         } catch (IOException ioException){
             System.err.println(ioException.getMessage());
         }
-
+        /*
+        This try/catch block is not working right and I am not going to fix it now
+         */
         try{
             reader = new BufferedReader(new FileReader(PREFS_FILE));
             String ln = "";
