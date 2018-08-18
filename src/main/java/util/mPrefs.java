@@ -9,7 +9,7 @@ import java.util.HashMap;
 public class mPrefs {
     //loaded a runtime with constants
     private double VERSION_NUMBER = -1; //-1 is not yet init
-    private final String PREFS_FILE = "resources/preferances.tsv";
+    private final String PREFS_FILE = "preferences.tsv";
     private  FileWriter writer;
     private  BufferedReader reader;
     private  HashMap<String, String> PREFERENCE_DICTIONARY;
