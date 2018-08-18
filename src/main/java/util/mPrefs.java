@@ -5,18 +5,16 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.prefs.Preferences;
 
-public class prefs {
+public class mPrefs {
     //loaded a runtime with constants
-    private static double VERSION_NUMBER = -1; //-1 is not yet init
+    private double VERSION_NUMBER = -1; //-1 is not yet init
     private final String PREFS_FILE = "resources/preferances.tsv";
-    private static FileWriter writer;
-    private static BufferedReader reader;
-    private static HashMap<String, String> PREFERENCE_DICTIONARY;
-    public prefs() {
+    private  FileWriter writer;
+    private  BufferedReader reader;
+    private  HashMap<String, String> PREFERENCE_DICTIONARY;
+    public mPrefs() {
         PREFERENCE_DICTIONARY = new HashMap<>();
-
         try {
             writer = new FileWriter(PREFS_FILE, true);
         } catch (IOException ioException){
@@ -35,9 +33,10 @@ public class prefs {
         }
     }
 
-    public static double getVERSION_NUMBER() {
-        double VERSION_NUMBER = (Double.valueOf(PREFERENCE_DICTIONARY.get("version")
-        return (VERSION_NUMBER != null) ? (VERSION_NUMBER) : (-1);
+    public double getVERSION_NUMBER() {
+        if (PREFERENCE_DICTIONARY.containsKey("version"))
+            return Double.valueOf(PREFERENCE_DICTIONARY.get("version"));
 
+        else return -2;
     }
 }

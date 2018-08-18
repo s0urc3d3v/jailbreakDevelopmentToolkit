@@ -1,12 +1,20 @@
 package UI;
 
+import util.mPrefs;
+
 import javax.swing.*;
 
 public class mainFrame { //lol
-    JFrame frame = new JFrame("Toolkit, version " + util.prefs.getVERSION_NUMBER());
-    JPanel panel = new JPanel();
+    mPrefs prefs;
+    JFrame frame;
+    JPanel panel;
 
-    private void init() {
+    public void init() {
+        prefs = new mPrefs();
+
+        frame = new JFrame("Toolkit, version " + prefs.getVERSION_NUMBER());
+        panel = new JPanel();
+
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(500, 500);
         frame.setVisible(true);
