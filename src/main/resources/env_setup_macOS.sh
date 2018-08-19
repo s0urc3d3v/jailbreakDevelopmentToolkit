@@ -1,4 +1,6 @@
+#!/usr/bin/env bash
 cd ~
+# This will all be optional later
 echo "Installing homebrew"
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 echo "Installing ldid and xz via homebrew"
