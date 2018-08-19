@@ -8,7 +8,7 @@ public interface basicDeviceInterface {
     public int getIP();
     public boolean pushFileToPath(File f, String path);
     public FileSystem getFileSystem();
-    public String getVersionNumber();
+    public String getIosVersionNumber();
     public boolean isSubstrateSupported();
     public boolean hasRoot();
     public boolean accessable();

@@ -1,11 +1,17 @@
 package device.models;
 
+import util.mPrefs;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.FileSystem;
 
 public class iPhoneX extends device.iPhone implements deviceInterface.basicDeviceInterface {
+    util.mPrefs prefs;
 
+    public iPhoneX (){
+        prefs = new mPrefs();
+    }
     @Override
     public boolean respring() {
         //requires SSH to be configured in advance
@@ -20,8 +26,9 @@ public class iPhoneX extends device.iPhone implements deviceInterface.basicDevic
     }
 
     @Override
-    public int getIP() {
-        return 0;
+    public int getIP() { //-1 is an error
+        return (prefs.getPreference("ip")!= null) ? (int) prefs.getPreference("ip") : (-1);
+
     }
 
     @Override
@@ -35,22 +42,22 @@ public class iPhoneX extends device.iPhone implements deviceInterface.basicDevic
     }
 
     @Override
-    public String getVersionNumber() {
+    public String getIosVersionNumber() {
         return null;
     }
 
     @Override
-    public boolean isSubstrateSupported() {
-        return false;
+    public boolean isSubstrateSupported() { //Assuming true for the time being
+        return true;
     }
 
     @Override
-    public boolean hasRoot() {
-        return false;
+    public boolean hasRoot() { //Assuming true for the time being
+        return true;
     }
 
     @Override
     public boolean accessable() {
-        return false;
+        return true; //Assuming true for the time being
     }
 }

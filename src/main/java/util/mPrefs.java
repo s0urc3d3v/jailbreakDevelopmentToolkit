@@ -41,4 +41,7 @@ public class mPrefs {
 
         else return -2;
     }
+    public Object getPreference(String key){ //generic method, we will see if this is good or terriable in time
+        return (PREFERENCE_DICTIONARY.get(key));
+    }
 }
