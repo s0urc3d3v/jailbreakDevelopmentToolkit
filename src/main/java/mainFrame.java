@@ -25,9 +25,44 @@ public class mainFrame {
                 try {
                     makeInstallProcessBuilder.start();
                 } catch (IOException e1) {
-                    e1.toString();
+                    placeholderImplementationOfGenericErrorInterfaceForDebugging errorHandler = new placeholderImplementationOfGenericErrorInterfaceForDebugging();
+                    errorHandler.setErrorData(e1.toString());
+                    errorHandler.displayErrorMsgToUser("could not make install");
 
                 }
+            }
+        });
+
+        makePackageInstallButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                prefs = new mPrefs();
+                ProcessBuilder makeInstallProcessBuilder = new ProcessBuilder("make package install");
+                makeInstallProcessBuilder.directory(new File((String) prefs.getPreference("projectDirectory")));
+                try {
+                    makeInstallProcessBuilder.start();
+                } catch (IOException e1) {
+                    placeholderImplementationOfGenericErrorInterfaceForDebugging errorHandler = new placeholderImplementationOfGenericErrorInterfaceForDebugging();
+                    errorHandler.setErrorData(e1.toString());
+                    errorHandler.displayErrorMsgToUser("could not make package install");
+
+                }
+            }
+        });
+
+
+        ReloadProjectButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //TODO Reload project source files
+            }
+        });
+
+
+        reloadMakefileButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //TODO reload Makefile
             }
         });
     }

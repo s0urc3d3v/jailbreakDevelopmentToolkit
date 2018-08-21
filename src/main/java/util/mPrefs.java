@@ -1,20 +1,19 @@
 package util;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.HashMap;
 
 public class mPrefs {
     //loaded a runtime with constants
     private double VERSION_NUMBER = -1; //-1 is not yet init
-    private final String PREFS_FILE = "preferences.tsv";
+    private File PREFS_FILE;
     private  FileWriter writer;
     private  BufferedReader reader;
     private  HashMap<String, String> PREFERENCE_DICTIONARY;
     public mPrefs() {
         PREFERENCE_DICTIONARY = new HashMap<>();
+        ClassLoader loader = getClass().getClassLoader();
+        PREFS_FILE = new File(loader.getResource("prefs.csv").getFile());
         try {
             writer = new FileWriter(PREFS_FILE, true);
         } catch (IOException ioException){
@@ -27,7 +26,8 @@ public class mPrefs {
             reader = new BufferedReader(new FileReader(PREFS_FILE));
             String ln = "";
             while ((ln = reader.readLine()) != null){
-                String regexArray[] = ln.split("\t");
+                ln = ln.replaceAll("\\s", "");
+                String regexArray[] = ln.split(",");
                 PREFERENCE_DICTIONARY.put(regexArray[0], regexArray[1]);
             }
         } catch (IOException ioe){
