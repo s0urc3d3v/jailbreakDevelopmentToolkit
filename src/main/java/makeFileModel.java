@@ -37,8 +37,16 @@ public class makeFileModel {
 
     public ArrayList<String> readMakeFileByLine() throws IOException {
         ArrayList<String> lines = new ArrayList<>();
-        String makeFile = prefs.getPreference("projectDirectory") + "/Makefile";
-        BufferedReader reader = new BufferedReader(new FileReader(makeFile));
+        String makeFilePath = "";
+        if (prefs.getPreference("projectDirectory") != null) {
+            makeFilePath = prefs.getPreference("projectDirectory") + "/Makefile";
+        }
+        else {
+            placeholderImplementationOfGenericErrorInterfaceForDebugging errorInterfaceForDebugging = new placeholderImplementationOfGenericErrorInterfaceForDebugging();
+            errorInterfaceForDebugging.displayErrorMsgToUser("Failed to retrieve Makefile: no project directory set");
+            System.exit(0);
+        }
+        BufferedReader reader = new BufferedReader(new FileReader(makeFilePath));
         String ln;
         while ((ln = reader.readLine()) != null){
             lines.add(ln);

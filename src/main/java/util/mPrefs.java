@@ -12,8 +12,18 @@ public class mPrefs {
     private  HashMap<String, String> PREFERENCE_DICTIONARY;
     public mPrefs() {
         PREFERENCE_DICTIONARY = new HashMap<>();
-        ClassLoader loader = getClass().getClassLoader();
-        PREFS_FILE = new File(loader.getResource("prefs.csv").getFile());
+
+        PREFS_FILE = new File("prefs.csv");
+
+        if (!PREFS_FILE.exists()) {
+            try {
+                PREFS_FILE.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+
         try {
             writer = new FileWriter(PREFS_FILE, true);
         } catch (IOException ioException){
