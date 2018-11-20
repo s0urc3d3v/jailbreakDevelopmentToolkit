@@ -5,6 +5,8 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
+        UI.mainUI ui = new UI.mainUI();
+        ui.startUI();
         mPrefs prefs = new mPrefs();
 
         makeFileModel makeFileObj = new makeFileModel();
@@ -13,8 +15,7 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        mainFrame frame = new mainFrame();
-        mainFrame.main(null);
+
 
         
     }
